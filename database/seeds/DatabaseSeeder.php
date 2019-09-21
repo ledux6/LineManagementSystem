@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('lines')->insert([
+            'name' => 'Stomotologas',
+            'number' => '1',
+        ]);
+        DB::table('lines')->insert([
+            'name' => 'Ortopedas',
+            'number' => '2',
+        ]);
     }
 }

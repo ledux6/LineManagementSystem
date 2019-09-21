@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ScoreboardController@index');
+Route::get('/register', 'RegistrationController@index');
+Route::post('/register/add', 'RegistrationController@add');
+Route::get('/worker_page', 'WorkerController@index');
+Route::post('/worker_page/line', 'WorkerController@line');
+Route::get('/worker_page/line/remove', 'WorkerController@remove');
