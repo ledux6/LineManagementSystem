@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">NFQ</a>
     <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/">Švieslentė <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link " href="/">Švieslentė <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/register">Registracija</a>
         <a class="nav-item nav-link active" href="/worker_page">Darbuotojo puslapis</a>
         <a class="nav-item nav-link" href="/waiting">Kiek liko laukti?</a>
@@ -20,21 +20,24 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <form action="/worker_page/line" method="post">
-                @csrf
-                <div class="form-group">
-                    <label >Eile</label>
-                    <select name="id" class="browser-default custom-select">
-                        <option value="" disabled selected>Pasirinkite eile.</option>
-                        @foreach ($lines as $line)
-                            <option  value="{{$line->id}}">{{$line->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Pasirinkti</button>
-            </form>
+            <h5>Jūsų numeris {{$number}}</h5>
+            <h5>Apytiksliai liko laukti </h5><h5 id="time">{{$wait_time}}:00</h5>
         </div>
     </div>
 </div>
 </body>
+<script>
+    window.onload = function myFunction() {
+        setInterval(function(){
+            var date = new Date(null);
+            var element = document.getElementById("time");
+            var time = element.innerHTML.split(':');
+            console.log(time);
+            date.setMinutes(time[0]);
+            date.setSeconds(time[1]-5);
+            element.innerHTML = date.getUTCMinutes() + ':' +  date.getUTCSeconds();
+        }, 5000);
+    }
+
+</script>
 </html>

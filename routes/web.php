@@ -17,3 +17,5 @@ Route::post('/register/add', 'RegistrationController@add');
 Route::get('/worker_page', 'WorkerController@index');
 Route::post('/worker_page/line', 'WorkerController@line');
 Route::get('/worker_page/line/remove', 'WorkerController@remove');
+Route::get('/waiting', 'WaitingController@index');
+Route::get('/waiting/show', 'WaitingController@show');

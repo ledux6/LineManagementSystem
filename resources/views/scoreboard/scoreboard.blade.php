@@ -14,17 +14,24 @@
             <a class="nav-item nav-link active" href="/">Švieslentė <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/register">Registracija</a>
             <a class="nav-item nav-link" href="/worker_page">Darbuotojo puslapis</a>
+            <a class="nav-item nav-link" href="/waiting">Kiek liko laukti?</a>
         </div>
     </nav>
     <div class="container">
         <div class="mt-2">
+
         @foreach($lines as $line)
+                @php($count = 0)
             @foreach($line->users as $user)
-            <div class="card">
-                <div class="card-body">
-                    {{$user->number}} {{$line->name}}
-                </div>
-            </div>
+                @if($user->serviced == 0)
+                    <div class="card">
+                        <div class="card-body">
+                            #{{$user->number}} {{$line->name}}
+                            <br>
+                            Liko laukti: {{$line->average() * ++$count}} minutes.
+                        </div>
+                    </div>
+                    @endif
             @endforeach
         @endforeach
         </div>

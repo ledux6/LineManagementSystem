@@ -11,9 +11,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">NFQ</a>
     <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/">Švieslentė <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link " href="/">Švieslentė <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/register">Registracija</a>
-        <a class="nav-item nav-link" href="/worker_page">Darbuotojo puslapis</a>
+        <a class="nav-item nav-link active" href="/worker_page">Darbuotojo puslapis</a>
+        <a class="nav-item nav-link" href="/waiting">Kiek liko laukti?</a>
     </div>
 </nav>
 <div class="container">

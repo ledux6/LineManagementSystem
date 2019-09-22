@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Line;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +15,25 @@ class RegistrationController extends Controller
     }
 
     public function add(Request $request){
-        DB::table('users')->insert(
-            ['name' => $request->name,
-                'number' => $request->id,
-                'line_id' =>$request->id,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')]
-        );
-        $lines = Line::all();
-        return view('scoreboard/scoreboard', ['lines' => $lines]);
+        $id = DB::table('users')->max('id');
+        if(isset($request->id) &&  isset($request->name)) {
+            DB::table('users')->insert(
+                ['name' => $request->name,
+                    'number' => $request->id . "" . $id,
+                    'serviced' => 0,
+                    'line_id' => $request->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')]
+            );
+        }
+        else{
+            $lines = DB::table('lines')->get();
+            $error = 'Įvyko klaida, kreipkitės telefonu';
+            return view('addnewclient/register', ['lines' => $lines, 'error'=> $error]);
+        }
+        $lines = DB::table('lines')->get();
+        $error = 'Užregistruota sėkmingai';
+        return view('addnewclient/register', ['lines' => $lines, 'error'=> $error]);
 
     }
 }
