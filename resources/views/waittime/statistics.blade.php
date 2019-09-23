@@ -38,6 +38,5 @@
             element.innerHTML = date.getUTCMinutes() + ':' +  date.getUTCSeconds();
         }, 5000);
     }
-
 </script>
 </html>

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Line;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

@@ -21,26 +21,26 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Registracijos forma</h5>
-        <form action="/register/add" method="post">
-            @csrf
-            <div class="form-group">
-                <label >Vardas</label>
-                <input class="form-control" name="name">
-            </div>
-            <div class="form-group">
-                <label>Specialistas</label>
-                <select name="id" class="browser-default custom-select">
-                    <option value="" disabled selected>Pasirinkite norima specialista.</option>
-                    @foreach ($lines as $line)
-                        <option  value="{{$line->id}}">{{$line->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Rinktis</button>
-        </form>
+            <form action="/register/add" method="post">
+                @csrf
+                <div class="form-group">
+                    <label >Vardas</label>
+                    <input class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Specialistas</label>
+                    <select name="id" class="browser-default custom-select">
+                        <option value="" disabled selected>Pasirinkite norima specialista.</option>
+                        @foreach ($lines as $line)
+                            <option  value="{{$line->id}}">{{$line->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Rinktis</button>
+            </form>
             @if(isset($error))
                 <div>{{$error}}</div>
-                @endif
+            @endif
         </div>
     </div>
 </div>
